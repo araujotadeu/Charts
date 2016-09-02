@@ -345,6 +345,12 @@ public class PieChartRenderer: DataRenderer
                 guard let e = dataSet.entryForIndex(j) else { continue }
                 let pe = e as? PieChartDataEntry
                 
+                // draw only if the value is greater than zero
+                if ((abs(pe!.value) <= 0.000001)) {
+                    xIndex += 1
+                    continue
+                }
+                
                 if (xIndex == 0)
                 {
                     angle = 0.0
